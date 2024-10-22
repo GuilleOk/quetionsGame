@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
 import React from 'react'
+import { decodeHtmlEntities } from '../handlers/stringsConverter'
 
 const ActualQuestion = ({ questions, question, setTotalAnswers, totalAnswers, numberOfQuestionToShow, correct_Answer, incorrect_Answers, playerPoints, setPlayerPoints, playerTurn, setPlayerTurn, winner, setWinner }) => {
   if (questions.length === 0 || numberOfQuestionToShow === 11) {
@@ -28,7 +29,7 @@ const ActualQuestion = ({ questions, question, setTotalAnswers, totalAnswers, nu
     }
     return (
       <div className='actualQuestion'>
-        <h1 className='questionToShow' style={{ color: 'blue' }}>{question}</h1>
+        <h1 className='questionToShow' style={{ color: 'white' }}>{decodeHtmlEntities(question)}</h1>
         <div className='d-none alertIncorrectAnswer'>
           <h2 className='h2IncorrectAnswer'>Incorrect Answer</h2>
           <button className='btn buttonHandlerAlert' onClick={handleAlert}>Close</button>
@@ -36,7 +37,7 @@ const ActualQuestion = ({ questions, question, setTotalAnswers, totalAnswers, nu
         <div className='row mt-4 mb-2 answers'>
           <div className='col-lg-3'>
             <div className='d-flex justify-content-center'>
-              <button className='btn answerContainer' onClick={() => handlerAnswer(correct_Answer)}>{correct_Answer}</button>
+              <button className='btn answerContainer' onClick={() => handlerAnswer(correct_Answer)}>{decodeHtmlEntities(correct_Answer)}</button>
             </div>
           </div>
           {/* eslint-disable-next-line camelcase */}
@@ -44,7 +45,7 @@ const ActualQuestion = ({ questions, question, setTotalAnswers, totalAnswers, nu
             return (
               <div className='col-lg-3' key={answerItem}>
                 <div className='d-flex justify-content-center'>
-                  <button className='btn answerContainer' onClick={() => handlerAnswer(answerItem)}>{answerItem}</button>
+                  <button className='btn answerContainer' onClick={() => handlerAnswer(answerItem)}>{decodeHtmlEntities(answerItem)}</button>
                 </div>
               </div>
             )

@@ -31,14 +31,16 @@ const App = () => {
   return (
     <div className='container containerGame mt-5'>
       <h1 className='header mb-5' onClick={handlerHeader}>Click here to show the info</h1>
-      <div className='d-flex containerPlayerTurn justify-content-center align-items-center my-2'>
-        <div style={{ border: '1px solid black', borderRadius: '10px', padding: '5px', backgroundColor: 'aliceblue', color: 'black' }}>
+      <div className='d-flex row containerPlayerTurn justify-content-center align-items-center my-2'>
+        <div className='col-4' style={{ border: '1px solid black', borderRadius: '10px', padding: '5px', backgroundColor: 'aliceblue', color: 'black' }}>
           <h2 style={{ textAlign: 'center', borderBottom: '1px solid darkgray', paddingBottom: '5px' }}>Player Turn</h2>
-          <h2 style={{ textAlign: 'center' }}>{playerTurn ? 'Player 1' : 'Player 2'}</h2>
+          <h2 style={{ textAlign: 'center', fontSize: '25px' }}>{playerTurn ? 'Player 1' : 'Player 2'}</h2>
         </div>
-        <button className='btn btn-outline-secondary' onClick={handlerReset}>Reset Game</button>
-        <div style={{ border: '1px solid black', borderRadius: '10px', padding: '5px', backgroundColor: 'aliceblue', color: 'black' }}>
-          <h2 style={{ textAlign: 'center', borderBottom: '1px solid darkgray' }}>Score</h2>
+        <div className='col-4 d-flex justify-content-center'>
+          <button className='btn btn-outline-secondary' onClick={handlerReset}>Reset Game</button>
+        </div>
+        <div className='col-4' style={{ border: '1px solid black', borderRadius: '10px', padding: '5px', backgroundColor: 'aliceblue', color: 'black' }}>
+          <h2 style={{ textAlign: 'center', borderBottom: '1px solid darkgray', paddingBottom: '5px' }}>Score</h2>
           <PointsTable playerPoints={playerPoints} />
         </div>
       </div>
