@@ -11,7 +11,7 @@ const WinnerToShow = ({ winner, setPlayerTurn, setPlayerPoints, setWinner, setTo
 
   return (
     <div className={`${winner.length === 0 ? 'd-none' : 'winnerContainer'}`}>
-      <h2 className='headerWinner my-4'>Result</h2>
+      <h2 className='headerWinner my-4'>Winner</h2>
       <div className='winnerContentContainer my-4 mx-auto col'>
         <div>
           <h2 className='h2WinnerContent'>{winner}</h2>

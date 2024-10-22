@@ -43,6 +43,10 @@
     color: white;
 }
 
+.answerContainer:hover{
+    background-color: orangered;
+}
+
 .winnerContainer{
     z-index: 1000;
     background-color: blue;
@@ -97,4 +101,36 @@
 
 .actualQuestion{
     margin-bottom: 2rem;
+}
+
+.alertIncorrectAnswer{
+    position: absolute;
+    left: 30%;
+    top: 20vh;
+    min-height: 35vh;
+    width: 40vw;
+    border: 1px solid white;
+    border-radius: 10px;
+    background-color: red;
+    color: white;
+}
+
+.h2IncorrectAnswer{
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.buttonHandlerAlert{
+    position: absolute;
+    left: 44%;
+    top: 25vh;
+    color: red;
+    background-color: white;
+}
+
+.buttonHandlerAlert:hover{
+    background-color: red;
+    color: white;
+    border: 1px solid white;
+
 }

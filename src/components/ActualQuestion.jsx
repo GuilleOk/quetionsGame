@@ -5,6 +5,10 @@ const ActualQuestion = ({ questions, question, setTotalAnswers, totalAnswers, nu
   if (questions.length === 0 || numberOfQuestionToShow === 11) {
     return ''
   } else {
+    const handleAlert = () => {
+      const alertContainer = document.querySelector('.alertIncorrectAnswer')
+      alertContainer.className = 'd-none alertIncorrectAnswer'
+    }
     const handlerAnswer = (answer) => {
       const points = playerPoints
       setTotalAnswers(totalAnswers + 1)
@@ -17,16 +21,22 @@ const ActualQuestion = ({ questions, question, setTotalAnswers, totalAnswers, nu
         }
       } else {
         // eslint-disable-next-line no-undef
-        alert('Respuesta Incorrecta')
+        // alert('Respuesta Incorrecta')
+        const alertContainer = document.querySelector('.alertIncorrectAnswer')
+        alertContainer.className = 'alertIncorrectAnswer'
       }
     }
     return (
       <div className='actualQuestion'>
         <h1 className='questionToShow' style={{ color: 'blue' }}>{question}</h1>
+        <div className='d-none alertIncorrectAnswer'>
+          <h2 className='h2IncorrectAnswer'>Incorrect Answer</h2>
+          <button className='btn buttonHandlerAlert' onClick={handleAlert}>Close</button>
+        </div>
         <div className='row mt-4 mb-2'>
           <div className='col-lg-3'>
             <div className='d-flex justify-content-center'>
-              <button className='btn btn-outline-primary answerContainer' onClick={() => handlerAnswer(correct_Answer)}>{correct_Answer}</button>
+              <button className='btn answerContainer' onClick={() => handlerAnswer(correct_Answer)}>{correct_Answer}</button>
             </div>
           </div>
           {/* eslint-disable-next-line camelcase */}
@@ -34,7 +44,7 @@ const ActualQuestion = ({ questions, question, setTotalAnswers, totalAnswers, nu
             return (
               <div className='col-lg-3' key={answerItem}>
                 <div className='d-flex justify-content-center'>
-                  <button className='btn btn-outline-primary answerContainer' onClick={() => handlerAnswer(answerItem)}>{answerItem}</button>
+                  <button className='btn answerContainer' onClick={() => handlerAnswer(answerItem)}>{answerItem}</button>
                 </div>
               </div>
             )
