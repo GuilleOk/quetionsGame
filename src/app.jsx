@@ -19,15 +19,12 @@ const App = () => {
     setTotalAnswers(0)
     setResetAll(!resetAll)
   }
-  const handlerSwitchTurn = () => {
-    setPlayerTurn(!playerTurn)
-  }
+
   return (
     <div className='container my-5'>
       <h1 className='header mb-5'>In this game the players must answer five questions each other, at the end who had gone more points win the game</h1>
-      <div className='d-flex containerPlayerTurn justify-content-center'>
-        <h1>{playerTurn ? 'Player 1' : 'Player 2'}</h1>
-        {/* <button className='btn btn-primary' onClick={handlerSwitchTurn}>Change Turn</button> */}
+      <div className='d-flex containerPlayerTurn justify-content-center align-items-center my-5'>
+        <h2>{playerTurn ? 'Player 1' : 'Player 2'}</h2>
         <button className='btn btn-outline-secondary' onClick={handlerReset}>Reset Game</button>
         <PointsTable playerPoints={playerPoints} />
       </div>

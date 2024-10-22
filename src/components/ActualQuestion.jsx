@@ -19,33 +19,22 @@ const ActualQuestion = ({ questions, question, setTotalAnswers, totalAnswers, nu
         // eslint-disable-next-line no-undef
         alert('Respuesta Incorrecta')
       }
-    //   if (totalAnswers === 9) {
-    //     const { pointsPlayer1, pointsPlayer2 } = playerPoints
-    //     if (pointsPlayer1 < pointsPlayer2) {
-    //       setWinner('Player 2')
-    //     } else if (pointsPlayer1 > pointsPlayer2) {
-    //       setWinner('Player 2')
-    //     } else {
-    //       setWinner('Draw')
-    //     }
-    //     console.log('Winner: ', winner)
-    //   }
     }
     return (
       <div className='container'>
-        <h2 className='questionToShow'>{question}</h2>
+        <h3 className='questionToShow'>{question}</h3>
         <div className='row my-5'>
           <div className='col-lg-3'>
-            <div className='answerContainer' onClick={() => handlerAnswer(correct_Answer)}>
-              {correct_Answer}
+            <div className='d-flex justify-content-center'>
+              <button className='btn btn-outline-primary answerContainer' onClick={() => handlerAnswer(correct_Answer)}>{correct_Answer}</button>
             </div>
           </div>
           {/* eslint-disable-next-line camelcase */}
           {incorrect_Answers.map(answerItem => {
             return (
               <div className='col-lg-3' key={answerItem}>
-                <div className='answerContainer' onClick={() => handlerAnswer(answerItem)}>
-                  {answerItem}
+                <div className='d-flex justify-content-center'>
+                  <button className='btn btn-outline-primary answerContainer' onClick={() => handlerAnswer(answerItem)}>{answerItem}</button>
                 </div>
               </div>
             )

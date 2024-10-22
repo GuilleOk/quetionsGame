@@ -28,19 +28,15 @@ const QuestionComponent = ({ resetAll, setTotalAnswers, totalAnswers, setPlayerP
           setIncorrect_Answers(newQuestions[numberOfQuestionToShow].incorrect_answers)
         })
     }
-    console.log('winner: ', winner)
   }, [winner, resetAll])
 
   useEffect(() => {
-    console.log('questions', questions)
     if (questions.length !== 0) {
       if (numberOfQuestionToShow < 10) {
         setNumberOfQuestionToShow(numberOfQuestionToShow + 1)
         setQuestion(questions[numberOfQuestionToShow].question)
         setCorrect_Ansewers(questions[numberOfQuestionToShow].correct_answer)
         setIncorrect_Answers(questions[numberOfQuestionToShow].incorrect_answers)
-        console.log('numberOfQuestionToShow: ', numberOfQuestionToShow)
-        console.log('question: ', question)
       }
     }
   }, [playerTurn, questions])
@@ -51,11 +47,10 @@ const QuestionComponent = ({ resetAll, setTotalAnswers, totalAnswers, setPlayerP
       if (pointsPlayer1 < pointsPlayer2) {
         setWinner('Player 2')
       } else if (pointsPlayer1 > pointsPlayer2) {
-        setWinner('Player 2')
+        setWinner('Player 1')
       } else {
         setWinner('Draw')
       }
-      console.log('Winner: ', winner)
     }
   }, [totalAnswers])
 
