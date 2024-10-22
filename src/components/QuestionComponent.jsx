@@ -1,61 +1,29 @@
 /* eslint-disable camelcase */
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import ActualQuestion from './ActualQuestion'
+import { useFetchQuestions } from '../hooks/useFetchQuestions'
+import { useTheLastAnswerValidate } from '../hooks/useTheLastAnswerValidate'
+import { useWinner } from '../hooks/useWinner'
 
 const QuestionComponent = ({ resetAll, setTotalAnswers, totalAnswers, setPlayerPoints, playerTurn, setPlayerTurn, winner, setWinner, playerPoints }) => {
-  const [questions, setQuestions] = useState([])
-  const [numberOfQuestionToShow, setNumberOfQuestionToShow] = useState(0)
-  const [question, setQuestion] = useState('')
-  const [correct_Answer, setCorrect_Ansewers] = useState('')
-  const [incorrect_Answers, setIncorrect_Answers] = useState([])
+  const { makeFetch, questions, numberOfQuestionToShow, setNumberOfQuestionToShow, question, setQuestion, correct_Answer, setCorrect_Ansewers, incorrect_Answers, setIncorrect_Answers } = useFetchQuestions({ winner })
+  const { validateLastQuestion } = useTheLastAnswerValidate({ questions, numberOfQuestionToShow, setNumberOfQuestionToShow, setQuestion, setCorrect_Ansewers, setIncorrect_Answers })
+  const { validateWinner } = useWinner({ totalAnswers, playerPoints, setWinner })
 
   useEffect(() => {
-    setQuestions([])
-    setNumberOfQuestionToShow(0)
-    setQuestion('')
-    setCorrect_Ansewers('')
-    setIncorrect_Answers([])
-
-    if (winner === '') {
-      fetch('https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=multiple')
-        .then(response => response.json())
-        .then(data => {
-        // eslint-disable-next-line camelcase
-          const newQuestions = data.results.map(({ question, correct_answer, incorrect_answers }) => ({ question, correct_answer, incorrect_answers }))
-          setQuestions(newQuestions)
-          setQuestion(newQuestions[numberOfQuestionToShow].question)
-          setCorrect_Ansewers(newQuestions[numberOfQuestionToShow].correct_answer)
-          setIncorrect_Answers(newQuestions[numberOfQuestionToShow].incorrect_answers)
-        })
-    }
+    makeFetch()
   }, [winner, resetAll])
 
   useEffect(() => {
-    if (questions.length !== 0) {
-      if (numberOfQuestionToShow < 10) {
-        setNumberOfQuestionToShow(numberOfQuestionToShow + 1)
-        setQuestion(questions[numberOfQuestionToShow].question)
-        setCorrect_Ansewers(questions[numberOfQuestionToShow].correct_answer)
-        setIncorrect_Answers(questions[numberOfQuestionToShow].incorrect_answers)
-      }
-    }
+    validateLastQuestion()
   }, [playerTurn, questions])
 
   useEffect(() => {
-    if (totalAnswers === 10) {
-      const { pointsPlayer1, pointsPlayer2 } = playerPoints
-      if (pointsPlayer1 < pointsPlayer2) {
-        setWinner('Player 2')
-      } else if (pointsPlayer1 > pointsPlayer2) {
-        setWinner('Player 1')
-      } else {
-        setWinner('Draw')
-      }
-    }
+    validateWinner()
   }, [totalAnswers])
 
   return (
-    <div className='my-5'>
+    <div className='mt-3'>
       <ActualQuestion setTotalAnswers={setTotalAnswers} totalAnswers={totalAnswers} questions={questions} question={question} numberOfQuestionToShow={numberOfQuestionToShow} correct_Answer={correct_Answer} incorrect_Answers={incorrect_Answers} playerPoints={playerPoints} setPlayerPoints={setPlayerPoints} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} winner={winner} setWinner={setWinner} />
     </div>
   )

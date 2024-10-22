@@ -21,7 +21,7 @@ const ActualQuestion = ({ questions, question, setTotalAnswers, totalAnswers, nu
       }
     }
     return (
-      <div className='container'>
+      <div className='actualQuestion'>
         <h1 className='questionToShow' style={{ color: 'blue' }}>{question}</h1>
         <div className='row mt-4 mb-2'>
           <div className='col-lg-3'>

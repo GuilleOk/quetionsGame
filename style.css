@@ -33,13 +33,13 @@
 .answerContainer{
     border: 1px solid black;
     text-align: center;
-    font-size: larger;
+    font-size: large;
     font-weight: bold;
     border-radius: 10px;
     box-shadow: black 0 0 10px;
     background-color: blue;
-    min-height: 80px;
-    width: 240px;
+    min-height: 110px;
+    width: 250px;
     color: white;
 }
 
@@ -93,4 +93,8 @@
     background-color: red;
     color: white;
     border: 1px solid whitesmoke;
+}
+
+.actualQuestion{
+    margin-bottom: 2rem;
 }
