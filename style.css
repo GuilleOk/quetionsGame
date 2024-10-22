@@ -1,45 +1,60 @@
+*{
+    color: white;
+}
+
+.containerGame{
+    border: 1px solid black;
+    border-radius: 10px;
+    min-height: 88vh;
+    margin-top: 20px !important;
+    background-color: cornflowerblue;
+}
+
 .containerPlayerTurn{
-    gap: 40px;
+    gap: 60px;
+    background-color: white;
+    margin: 5% 10px;
+    min-height: 25vh;
+    border-radius: 10px;
 }
 
 .header{
     text-align: center;
+    font-size: xx-large;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
 }
 
 .questionToShow{
     text-align: center;
-}
-
-h2{
-    color: black;
-}
-
-h3{
-    color: black;
+    font-size: 37px;
 }
 
 .answerContainer{
     border: 1px solid black;
     text-align: center;
-    font-size: large;
+    font-size: larger;
     font-weight: bold;
     border-radius: 10px;
     box-shadow: black 0 0 10px;
-    background-color: white;
-    min-height: 50px;
-    min-width: 70px;
-    color: black;
+    background-color: blue;
+    min-height: 80px;
+    width: 240px;
+    color: white;
 }
 
 .winnerContainer{
     z-index: 1000;
-    background-color: black;
+    background-color: blue;
     color: white;
     border: 2px solid white;
     border-radius: 10px;
-    width: 60%;
-    min-height: 60vh;
+    width: 50%;
+    min-height: 50vh;
     margin: auto;   
+    position: absolute;
+    top: 20vh;
+    left: 24%;
 }
 
 .winnerContainer h2{
@@ -66,13 +81,16 @@ h3{
     margin-bottom: 2rem;
 }
 
-.btn-secondary{
-    background-color: black !important;
+.btn-outline-secondary{
+    background-color: white;
+    color: red;
     font-weight: bold;
-    border: 1px solid white;
+    font-size: large;
+    border: 1px solid red;
 }
 
-.btn-secondary:hover{
-    background-color: white !important;
-    color: black;
+.btn-outline-secondary:hover{
+    background-color: red;
+    color: white;
+    border: 1px solid whitesmoke;
 }
