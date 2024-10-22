@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import QuestionComponent from './components/QuestionComponent'
+import PointsTable from './components/PointsTable'
 
 const App = () => {
   const [playerTurn, setPlayerTurn] = useState(true)
@@ -25,7 +26,7 @@ const App = () => {
         <h1>{playerTurn ? 'Player 1' : 'Player 2'}</h1>
         <button className='btn btn-primary' onClick={handlerSwitchTurn}>Change Turn</button>
         <button className='btn btn-outline-secondary' onClick={handlerReset}>Reset Game</button>
-        {/* <button onClick={() => setFinishTurn(true)}>Terminar</button> */}
+        <PointsTable playerPoints={playerPoints} />
       </div>
       <QuestionComponent setPlayerPoints={setPlayerPoints} resetAll={resetAll} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} winner={winner} setWinner={setWinner} playerPoints={playerPoints} />
     </div>

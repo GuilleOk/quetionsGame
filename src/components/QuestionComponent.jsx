@@ -31,18 +31,20 @@ const QuestionComponent = ({ resetAll, setPlayerPoints, playerTurn, setPlayerTur
   useEffect(() => {
     console.log('questions', questions)
     if (questions.length !== 0) {
-      setNumberOfQuestionToShow(numberOfQuestionToShow + 1)
-      setQuestion(questions[numberOfQuestionToShow].question)
-      setCorrect_Ansewers(questions[numberOfQuestionToShow].correct_answer)
-      setIncorrect_Answers(questions[numberOfQuestionToShow].incorrect_answers)
-      console.log('numberOfQuestionToShow: ', numberOfQuestionToShow)
-      console.log('question: ', question)
+      if (numberOfQuestionToShow < 10) {
+        setNumberOfQuestionToShow(numberOfQuestionToShow + 1)
+        setQuestion(questions[numberOfQuestionToShow].question)
+        setCorrect_Ansewers(questions[numberOfQuestionToShow].correct_answer)
+        setIncorrect_Answers(questions[numberOfQuestionToShow].incorrect_answers)
+        console.log('numberOfQuestionToShow: ', numberOfQuestionToShow)
+        console.log('question: ', question)
+      }
     }
   }, [playerTurn, questions])
 
   return (
     <div className='my-5'>
-      <ActualQuestion questions={questions} question={question} correct_Answer={correct_Answer} incorrect_Answers={incorrect_Answers} playerPoints={playerPoints} setPlayerPoints={setPlayerPoints} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} setWinner={setWinner} />
+      <ActualQuestion questions={questions} question={question} numberOfQuestionToShow={numberOfQuestionToShow} correct_Answer={correct_Answer} incorrect_Answers={incorrect_Answers} playerPoints={playerPoints} setPlayerPoints={setPlayerPoints} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} setWinner={setWinner} />
     </div>
   )
 }
