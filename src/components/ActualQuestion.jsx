@@ -1,12 +1,13 @@
 /* eslint-disable camelcase */
 import React from 'react'
 
-const ActualQuestion = ({ questions, question, numberOfQuestionToShow, correct_Answer, incorrect_Answers, playerPoints, setPlayerPoints, playerTurn, setPlayerTurn, setWinner }) => {
+const ActualQuestion = ({ questions, question, setTotalAnswers, totalAnswers, numberOfQuestionToShow, correct_Answer, incorrect_Answers, playerPoints, setPlayerPoints, playerTurn, setPlayerTurn, winner, setWinner }) => {
   if (questions.length === 0 || numberOfQuestionToShow === 11) {
     return ''
   } else {
     const handlerAnswer = (answer) => {
       const points = playerPoints
+      setTotalAnswers(totalAnswers + 1)
       setPlayerTurn(!playerTurn)
       if (answer === correct_Answer) {
         if (playerTurn) {
@@ -18,6 +19,17 @@ const ActualQuestion = ({ questions, question, numberOfQuestionToShow, correct_A
         // eslint-disable-next-line no-undef
         alert('Respuesta Incorrecta')
       }
+    //   if (totalAnswers === 9) {
+    //     const { pointsPlayer1, pointsPlayer2 } = playerPoints
+    //     if (pointsPlayer1 < pointsPlayer2) {
+    //       setWinner('Player 2')
+    //     } else if (pointsPlayer1 > pointsPlayer2) {
+    //       setWinner('Player 2')
+    //     } else {
+    //       setWinner('Draw')
+    //     }
+    //     console.log('Winner: ', winner)
+    //   }
     }
     return (
       <div className='container'>

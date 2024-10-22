@@ -20,3 +20,45 @@
     border-radius: 10px;
     box-shadow: black 0 0 10px;
 }
+
+.winnerContainer{
+    z-index: 1000;
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    border-radius: 10px;
+    width: 60%;
+    min-height: 60vh;
+    margin: auto;   
+}
+
+.headerWinner{
+    text-align: center;
+    font-size: 80px;
+}
+
+.winnerContentContainer{
+    width: 40%;
+    height: 40vh;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+.h2WinnerContent{
+    font-weight: bolder;
+    font-size: xx-larger;
+    text-align: center;
+    margin-top: 4.5rem;
+    margin-bottom: 2rem;
+}
+
+.btn-secondary{
+    background-color: black !important;
+    font-weight: bold;
+    border: 1px solid white;
+}
+
+.btn-secondary:hover{
+    background-color: white !important;
+    color: black;
+}

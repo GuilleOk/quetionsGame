@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import ActualQuestion from './ActualQuestion'
 
-const QuestionComponent = ({ resetAll, setPlayerPoints, playerTurn, setPlayerTurn, winner, setWinner, playerPoints }) => {
+const QuestionComponent = ({ resetAll, setTotalAnswers, totalAnswers, setPlayerPoints, playerTurn, setPlayerTurn, winner, setWinner, playerPoints }) => {
   const [questions, setQuestions] = useState([])
   const [numberOfQuestionToShow, setNumberOfQuestionToShow] = useState(0)
   const [question, setQuestion] = useState('')
@@ -16,16 +16,19 @@ const QuestionComponent = ({ resetAll, setPlayerPoints, playerTurn, setPlayerTur
     setCorrect_Ansewers('')
     setIncorrect_Answers([])
 
-    fetch('https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=multiple')
-      .then(response => response.json())
-      .then(data => {
+    if (winner === '') {
+      fetch('https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=multiple')
+        .then(response => response.json())
+        .then(data => {
         // eslint-disable-next-line camelcase
-        const newQuestions = data.results.map(({ question, correct_answer, incorrect_answers }) => ({ question, correct_answer, incorrect_answers }))
-        setQuestions(newQuestions)
-        setQuestion(newQuestions[numberOfQuestionToShow].question)
-        setCorrect_Ansewers(newQuestions[numberOfQuestionToShow].correct_answer)
-        setIncorrect_Answers(newQuestions[numberOfQuestionToShow].incorrect_answers)
-      })
+          const newQuestions = data.results.map(({ question, correct_answer, incorrect_answers }) => ({ question, correct_answer, incorrect_answers }))
+          setQuestions(newQuestions)
+          setQuestion(newQuestions[numberOfQuestionToShow].question)
+          setCorrect_Ansewers(newQuestions[numberOfQuestionToShow].correct_answer)
+          setIncorrect_Answers(newQuestions[numberOfQuestionToShow].incorrect_answers)
+        })
+    }
+    console.log('winner: ', winner)
   }, [winner, resetAll])
 
   useEffect(() => {
@@ -42,9 +45,23 @@ const QuestionComponent = ({ resetAll, setPlayerPoints, playerTurn, setPlayerTur
     }
   }, [playerTurn, questions])
 
+  useEffect(() => {
+    if (totalAnswers === 10) {
+      const { pointsPlayer1, pointsPlayer2 } = playerPoints
+      if (pointsPlayer1 < pointsPlayer2) {
+        setWinner('Player 2')
+      } else if (pointsPlayer1 > pointsPlayer2) {
+        setWinner('Player 2')
+      } else {
+        setWinner('Draw')
+      }
+      console.log('Winner: ', winner)
+    }
+  }, [totalAnswers])
+
   return (
     <div className='my-5'>
-      <ActualQuestion questions={questions} question={question} numberOfQuestionToShow={numberOfQuestionToShow} correct_Answer={correct_Answer} incorrect_Answers={incorrect_Answers} playerPoints={playerPoints} setPlayerPoints={setPlayerPoints} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} setWinner={setWinner} />
+      <ActualQuestion setTotalAnswers={setTotalAnswers} totalAnswers={totalAnswers} questions={questions} question={question} numberOfQuestionToShow={numberOfQuestionToShow} correct_Answer={correct_Answer} incorrect_Answers={incorrect_Answers} playerPoints={playerPoints} setPlayerPoints={setPlayerPoints} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} winner={winner} setWinner={setWinner} />
     </div>
   )
 }
