@@ -5,3 +5,18 @@
 .header{
     text-align: center;
 }
+
+.questionToShow{
+    text-align: center;
+}
+
+.answerContainer{
+    padding: 10px 10px;
+    margin: 20px 20px;
+    border: 1px solid black;
+    text-align: center;
+    font-size: larger;
+    font-weight: bold;
+    border-radius: 10px;
+    box-shadow: black 0 0 10px;
+}
