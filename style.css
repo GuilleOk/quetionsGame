@@ -105,10 +105,10 @@
 
 .alertIncorrectAnswer{
     position: absolute;
-    left: 30%;
+    left: 35%;
     top: 20vh;
-    min-height: 35vh;
-    width: 40vw;
+    height: 30vh;
+    width: 30vw;
     border: 1px solid white;
     border-radius: 10px;
     background-color: red;
@@ -122,9 +122,10 @@
 
 .buttonHandlerAlert{
     position: absolute;
-    left: 44%;
-    top: 25vh;
+    left: 41%;
+    top: 20vh;
     color: red;
+    font-weight: bold;
     background-color: white;
 }
 
@@ -132,5 +133,10 @@
     background-color: red;
     color: white;
     border: 1px solid white;
+}
 
+.answers{
+    position: absolute;
+    top: 65vh;
+    left: 11vw;
 }

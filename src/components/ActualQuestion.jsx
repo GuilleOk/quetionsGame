@@ -33,7 +33,7 @@ const ActualQuestion = ({ questions, question, setTotalAnswers, totalAnswers, nu
           <h2 className='h2IncorrectAnswer'>Incorrect Answer</h2>
           <button className='btn buttonHandlerAlert' onClick={handleAlert}>Close</button>
         </div>
-        <div className='row mt-4 mb-2'>
+        <div className='row mt-4 mb-2 answers'>
           <div className='col-lg-3'>
             <div className='d-flex justify-content-center'>
               <button className='btn answerContainer' onClick={() => handlerAnswer(correct_Answer)}>{correct_Answer}</button>
