@@ -29,7 +29,7 @@ const ActualQuestion = ({ questions, question, setTotalAnswers, totalAnswers, nu
     }
     return (
       <div className='actualQuestion'>
-        <h1 className='questionToShow' style={{ color: 'white' }}>{decodeHtmlEntities(question)}</h1>
+        <h1 className='questionToShow' style={{ color: 'white' }} data-testid='question'>{decodeHtmlEntities(question)}</h1>
         <div className='d-none alertIncorrectAnswer'>
           <h2 className='h2IncorrectAnswer'>Incorrect Answer</h2>
           <button className='btn buttonHandlerAlert' onClick={handleAlert}>Close</button>
